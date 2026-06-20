@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8-Day Safe Full-Body Riding Support Program</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: #0f1117; color: #f5f5f5; padding: 16px; line-height: 1.5; }
+    header { text-align: center; margin-bottom: 16px; }
+    h1 { font-size: 1.55rem; margin-bottom: 5px; }
+    .subtitle { color: #b8b8b8; font-size: 0.9rem; }
+    .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; position: sticky; top: 0; z-index: 10; background: #0f1117; padding: 10px 0; margin-bottom: 12px; }
+    .tabs button { border: 1px solid #343a52; background: #1c2030; color: white; padding: 10px 4px; border-radius: 12px; font-weight: bold; cursor: pointer; }
+    .tabs button.active { background: #4f7cff; border-color: #4f7cff; }
+    .day { display: none; }
+    .day.active { display: block; }
+    .day-title { font-size: 1.25rem; margin: 14px 0; }
+    details { background: #181b27; border: 1px solid #2b3042; border-radius: 16px; margin-bottom: 12px; overflow: hidden; }
+    summary { background: #202536; padding: 14px; font-weight: bold; cursor: pointer; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    .content { padding: 14px; }
+    .exercise { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #30364a; }
+    .exercise:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .exercise-name { font-weight: bold; color: white; }
+    .sets { color: #bfc7ff; font-size: 0.95rem; margin-top: 3px; }
+    .block { background: #111827; border: 1px solid #2d3748; border-radius: 16px; padding: 14px; margin: 16px 0 28px; }
+    .block h3 { margin-bottom: 8px; }
+    .block ul { padding-left: 20px; color: #d5d5d5; }
+    .warning { color: #f5d37a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>8-Day Safe Full-Body Riding Support Program</h1>
+    <p class="subtitle">Full Body • Joint-Friendly • Posture • Stability • Horse Riding Support</p>
+  </header>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="app"></main>
+  <script>
+    const globalNotes = [
+      "3 sets each exercise.",
+      "45-60 sec rest after each superset.",
+      "Slow controlled reps only.",
+      "No sharp pain.",
+      "Neutral spine throughout.",
+      "Avoid heavy weights.",
+      "Stop immediately if back or wrist pain increases.",
+      "Keep wrists neutral whenever possible.",
+      "Use a bench or support when balance or back comfort needs help.",
+      "All movements should feel smooth, controlled, and pain-free."
+    ];
+
+    const workouts = [
+      {
+        title: "Day 1",
+        warmup: [
+          "Easy Walk or March in Place — 5 min",
+          "Shoulder Rolls — 10 each direction",
+          "Hip Circles — 10 each direction",
+          "Band Pull-Aparts — 2 x 12",
+          "Bodyweight Box Squats to Bench — 2 x 10"
+        ],
+        supersets: [
+          ["Back & Biceps", ["Seated Resistance Band Rows — 12-15 reps", "Light Dumbbell Hammer Curls — 10-12 reps"]],
+          ["Chest & Triceps", ["Incline Push-Ups on Bench with Neutral Wrists — 8-12 reps", "Resistance Band Tricep Pushdowns — 12-15 reps"]],
+          ["Upper Legs & Shoulders", ["Bench Sit-to-Stands — 10-12 reps", "Resistance Band Lateral Raises — 10-12 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Dead Bug — 8-10 reps each side", "Standing Calf Raises Holding Bench — 12-15 reps"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Chest Stretch — 30 sec each side", "Seated Hamstring Stretch — 30 sec each side", "Calf Stretch — 30 sec each side", "Deep Breathing — 1 min"]
+      },
+      {
+        title: "Day 2",
+        warmup: ["Easy Stationary March — 5 min", "Cat-Cow Movement — 8 slow reps", "Band Face Pulls — 2 x 12", "Glute Bridges — 2 x 10", "Scapular Wall Slides — 2 x 8"],
+        supersets: [
+          ["Back & Biceps", ["Chest-Supported Dumbbell Rows on Incline Bench — 10-12 reps", "Resistance Band Curls — 12-15 reps"]],
+          ["Chest & Triceps", ["Dumbbell Floor Press with Neutral Grip — 10-12 reps", "Close-Grip Band Presses — 12-15 reps"]],
+          ["Upper Legs & Shoulders", ["Supported Reverse Lunges Holding Bench — 8-10 reps each leg", "Seated Dumbbell Lateral Raises — 10-12 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Side Plank from Knees — 15-25 sec each side", "Light Dumbbell Farmer Hold with Neutral Wrists — 20-30 sec"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Child's Pose with Hands Relaxed — 30 sec", "Hip Flexor Stretch — 30 sec each side", "Forearm Stretch Gentle — 20 sec each side", "Breathing Reset — 1 min"]
+      },
+      {
+        title: "Day 3",
+        warmup: ["Easy Walk — 5 min", "Ankle Circles — 10 each direction", "Band Pull-Aparts — 2 x 12", "Bodyweight Good Mornings with Hands on Hips — 2 x 8", "Supported Split Squat Practice — 1 x 8 each leg"],
+        supersets: [
+          ["Back & Biceps", ["Resistance Band Lat Pulldowns from High Anchor — 12-15 reps", "Light Dumbbell Curls with Back Supported — 10-12 reps"]],
+          ["Chest & Triceps", ["Incline Dumbbell Press on Bench with Neutral Grip — 10-12 reps", "Band Tricep Kickbacks — 10-12 reps each side"]],
+          ["Upper Legs & Shoulders", ["Step-Ups to Low Bench — 8-10 reps each leg", "Band External Rotations — 10-12 reps each side"]],
+          ["Abs, Lower Legs & Forearms", ["Bird Dog — 8-10 reps each side", "Seated Calf Raises with Light Dumbbells — 12-15 reps"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Lat Stretch — 30 sec each side", "Quad Stretch Holding Bench — 30 sec each side", "Seated Figure-4 Stretch — 30 sec each side", "Deep Breathing — 1 min"]
+      },
+      {
+        title: "Day 4",
+        warmup: ["Easy March or Walk — 5 min", "Shoulder Blade Squeezes — 2 x 10", "Hip Hinge Practice to Wall — 2 x 8", "Glute Bridges — 2 x 10", "Band Rows Light — 1 x 15"],
+        supersets: [
+          ["Back & Biceps", ["One-Arm Supported Dumbbell Row on Bench — 10-12 reps each side", "Band Hammer Curls — 12-15 reps"]],
+          ["Chest & Triceps", ["Bench Incline Push-Ups on Fists or Handles if Comfortable — 8-12 reps", "Resistance Band Tricep Pushdowns — 12-15 reps"]],
+          ["Upper Legs & Shoulders", ["Supported Lateral Lunges Small Range — 8-10 reps each side", "Seated Dumbbell Shoulder Press Light Neutral Grip — 8-10 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Pallof Press with Resistance Band — 10-12 reps each side", "Standing Calf Raises Slow Tempo — 12-15 reps"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Chest Stretch — 30 sec each side", "Hip Flexor Stretch — 30 sec each side", "Calf Stretch — 30 sec each side", "Breathing Reset — 1 min"]
+      },
+      {
+        title: "Day 5",
+        warmup: ["Easy Walk — 5 min", "Band Pull-Aparts — 2 x 12", "Scapular Wall Slides — 2 x 8", "Bench Sit-to-Stands — 2 x 10", "Dead Bug Practice — 1 x 8 each side"],
+        supersets: [
+          ["Back & Biceps", ["Seated Band Rows with Pause — 12-15 reps", "Incline Bench Dumbbell Curls Light — 10-12 reps"]],
+          ["Chest & Triceps", ["Dumbbell Floor Press Neutral Grip — 10-12 reps", "Band Tricep Pressdowns — 12-15 reps"]],
+          ["Upper Legs & Shoulders", ["Glute Bridges — 12-15 reps", "Band Front Raises Light — 10-12 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Heel Taps — 8-10 reps each side", "Dumbbell Suitcase Hold Light — 15-25 sec each side"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Hamstring Stretch — 30 sec each side", "Glute Stretch — 30 sec each side", "Shoulder Stretch — 30 sec each side", "Deep Breathing — 1 min"]
+      },
+      {
+        title: "Day 6",
+        warmup: ["Easy March in Place — 5 min", "Cat-Cow Movement — 8 slow reps", "Band Face Pulls — 2 x 12", "Supported Bodyweight Squats — 2 x 10", "Wrist Circles Gentle — 10 each direction"],
+        supersets: [
+          ["Back & Biceps", ["Band Straight-Arm Pulldowns — 12-15 reps", "Light Dumbbell Hammer Curls — 10-12 reps"]],
+          ["Chest & Triceps", ["Incline Dumbbell Press Neutral Grip — 10-12 reps", "Band Tricep Extensions with Elbows Comfortable — 10-12 reps"]],
+          ["Upper Legs & Shoulders", ["Low Step-Ups Holding Bench Support — 8-10 reps each leg", "Seated Band Lateral Raises — 10-12 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Seated Knee Lifts with Tall Posture — 10-12 reps each side", "Calf Raises with 2-Second Hold — 12-15 reps"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Lat Stretch — 30 sec each side", "Quad Stretch Holding Bench — 30 sec each side", "Forearm Stretch Gentle — 20 sec each side", "Breathing Reset — 1 min"]
+      },
+      {
+        title: "Day 7",
+        warmup: ["Easy Walk — 5 min", "Shoulder Rolls — 10 each direction", "Band Pull-Aparts — 2 x 12", "Glute Bridges — 2 x 10", "Supported Reverse Lunge Practice — 1 x 8 each leg"],
+        supersets: [
+          ["Back & Biceps", ["Chest-Supported Dumbbell Rows — 10-12 reps", "Band Curls with Slow Lowering — 10-12 reps"]],
+          ["Chest & Triceps", ["Incline Push-Ups on Bench — 8-12 reps", "Close-Grip Dumbbell Floor Press Light — 10-12 reps"]],
+          ["Upper Legs & Shoulders", ["Bench Sit-to-Stands Slow Tempo — 10-12 reps", "Band External Rotations — 10-12 reps each side"]],
+          ["Abs, Lower Legs & Forearms", ["Bird Dog with 2-Second Hold — 8-10 reps each side", "Light Farmer Hold Neutral Grip — 20-30 sec"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Chest Stretch — 30 sec each side", "Hip Flexor Stretch — 30 sec each side", "Calf Stretch — 30 sec each side", "Deep Breathing — 1 min"]
+      },
+      {
+        title: "Day 8",
+        warmup: ["Easy March or Walk — 5 min", "Hip Circles — 10 each direction", "Shoulder Blade Squeezes — 2 x 10", "Band Rows Light — 1 x 15", "Bodyweight Box Squats to Bench — 2 x 10"],
+        supersets: [
+          ["Back & Biceps", ["Resistance Band Rows with 2-Second Pause — 12-15 reps", "Seated Dumbbell Curls Light — 10-12 reps"]],
+          ["Chest & Triceps", ["Dumbbell Floor Press Neutral Grip — 10-12 reps", "Resistance Band Tricep Pushdowns — 12-15 reps"]],
+          ["Upper Legs & Shoulders", ["Supported Step-Back Lunges — 8-10 reps each leg", "Seated Dumbbell Lateral Raises — 10-12 reps"]],
+          ["Abs, Lower Legs & Forearms", ["Pallof Press Hold — 10-15 sec each side", "Standing Calf Raises Holding Bench — 12-15 reps"]]
+        ],
+        cooldown: ["Slow Walk — 3-5 min", "Hamstring Stretch — 30 sec each side", "Lat Stretch — 30 sec each side", "Shoulder Stretch — 30 sec each side", "Breathing Reset — 1 min"]
+      }
+    ];
+
+    const tabs = document.getElementById("tabs");
+    const app = document.getElementById("app");
+
+    workouts.forEach((workout, index) => {
+      const button = document.createElement("button");
+      button.textContent = "Day " + (index + 1);
+      if (index === 0) button.classList.add("active");
+      button.onclick = () => showDay(index);
+      tabs.appendChild(button);
+
+      const section = document.createElement("section");
+      section.className = "day" + (index === 0 ? " active" : "");
+      section.innerHTML = `
+        <h2 class="day-title">${workout.title}</h2>
+        <div class="block"><h3>Warmup</h3><ul>${workout.warmup.map(item => `<li>${item}</li>`).join("")}</ul></div>
+        <div class="block"><h3>3 sets each</h3><ul><li>45-60 sec rest after each superset.</li><li>Use light to moderate resistance only.</li><li>Every rep should stay slow, stable, and pain-free.</li></ul></div>
+        ${workout.supersets.map((superset, supersetIndex) => `
+          <details>
+            <summary>Superset ${supersetIndex + 1} — ${superset[0]}</summary>
+            <div class="content">
+              ${superset[1].map(exercise => {
+                const parts = exercise.split(" — ");
+                return `<div class="exercise"><div class="exercise-name">${parts[0]}</div><div class="sets">${parts[1] || ""}</div></div>`;
+              }).join("")}
+            </div>
+          </details>
+        `).join("")}
+        <div class="block"><h3>Cooldown</h3><ul>${workout.cooldown.map(item => `<li>${item}</li>`).join("")}</ul></div>
+        <div class="block"><h3>Important</h3><ul>${globalNotes.map(item => `<li class="${item.includes('Stop') || item.includes('pain') ? 'warning' : ''}">${item}</li>`).join("")}</ul></div>
+      `;
+      app.appendChild(section);
+    });
+
+    function showDay(index) {
+      document.querySelectorAll(".day").forEach((day, i) => day.classList.toggle("active", i === index));
+      document.querySelectorAll(".tabs button").forEach((button, i) => button.classList.toggle("active", i === index));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
